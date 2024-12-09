@@ -1,0 +1,29 @@
+.redirect {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  max-width: 343px;
+  margin: 0 auto;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+}
+
+.redirect__title {
+  color: #121212;
+  font-size: 16px;
+  margin: 0 0 40px;
+  font-weight: 400;
+}
+
+.redirect__image {
+  max-width: 240px;
+  margin-bottom: 24px;
+}
+
+.redirect__link,
+.redirect__link:active,
+.redirect__link:hover,
+.redirect__link:visited {
+  color: #0C5EFF;
+}

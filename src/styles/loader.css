@@ -1,0 +1,24 @@
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader {
+  --uib-size: 40px;
+  --uib-stroke: 5px;
+  --mask-size: calc(var(--uib-size) / 2 - var(--uib-stroke));
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: var(--uib-size);
+  width: var(--uib-size);
+  mask: radial-gradient(circle var(--mask-size), transparent 99%, #000 100%);
+  background-image: conic-gradient(transparent 25%, #0C5EFF);
+  animation: rotation .9s linear infinite;
+  border-radius: 50%;
+}

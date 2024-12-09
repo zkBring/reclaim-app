@@ -1,0 +1,22 @@
+.error {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 343px;
+  margin: 0 auto;
+}
+
+.error__image {
+  max-width: 240px;
+  margin-bottom: 24px;
+}
+
+
+.error__title {
+  margin: 0 0 8px;
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+  color: #121212;
+}

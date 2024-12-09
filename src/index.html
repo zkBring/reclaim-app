@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href='<%= require("./images/favicon.png") %>' />
+  <link rel="apple-touch-icon" href='<%= require("./images/favicon.png") %>'>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:image" content='<%= require("./images/meta-image.png") %>' />
+  <meta property="image" content='<%= require("./images/meta-image.png") %>' />
+  <meta
+    name="og:title"
+    content="You have received a digital asset. Click to claim it"
+  />
+
+  <style>
+    .header {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-top: 48px;
+    }
+
+    .header__logo {
+      max-width: 120px;
+    }
+
+  </style>
+  <title>You have received a digital asset, click to claim it</title>
+  
+</head>
+<body class="page">
+  <header class="header">
+    <img class="header__logo" src='<%= require("./images/linkdrop.png") %>' alt="Application Logo" />
+  </header>
+  <section data-vanilla-route-ele="router-wrap" class="content">
+
+  </section>
+
+  <template id="loader">
+    <div class="loader"></div>
+  </template>
+
+  <template id="error">
+    <div class="error">
+      <img class="error__image" src='<%= require("./images/qr-error.png") %>'>
+      <h2 class="error__title"></h2>
+    </div>
+  </template>
+  
+  <template id="redirect">
+    <div class="redirect">
+      <img class="redirect__image" src='<%= require("./images/redirect-image.png") %>' />
+      <h1 class="redirect__title">
+        You are about to claim tokens with Linkdrop. If you are not automatically redirected, please go <a class="redirect__link" href=''>here</a>
+      </h1>
+    </div>
+  </template>
+
+  <template id="qr">
+    <div class="qr">
+      <h1 class="qr__title">
+        Please, scan QR
+      </h1>
+      <div class="qr__item"></div>
+    </div>
+  </template>
+</body>
+</html>
