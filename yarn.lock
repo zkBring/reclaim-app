@@ -535,21 +535,6 @@
   resolved "https://registry.yarnpkg.com/@pkgjs/parseargs/-/parseargs-0.11.0.tgz#a77ea742fab25775145434eb1d2328cf5013ac33"
   integrity sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==
 
-"@qr-x/core@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@qr-x/core/-/core-1.0.0.tgz#912801537732c0a45674b5d24374239fc0d8e33e"
-  integrity sha512-vzrkKicqbEAmN2tu1Y9sdRplqh73rYQ9HIf6jsSojkEdyymVaXk63z2TH0h8acErjEcVLM1ly+Q7+nHs6QBDSg==
-  dependencies:
-    qr.js "^0.0.0"
-    svgpath "2.3.0"
-
-"@qr-x/vanilla@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@qr-x/vanilla/-/vanilla-1.1.1.tgz#f705490cb7915382db6e8158791a40ca645095da"
-  integrity sha512-i92SqbThYDqO9rByBoUDLBhyZ3zVIYa6QYcP8igXMLczBqD0AGxFswwjxU/FgVFQe/QgDaEYLuWrGamxnfI5+Q==
-  dependencies:
-    "@qr-x/core" "1.0.0"
-
 "@reclaimprotocol/js-sdk@^2.1.2":
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/@reclaimprotocol/js-sdk/-/js-sdk-2.1.2.tgz#bc14754be743da1519868b481c047e4d62cd1f97"
@@ -3253,10 +3238,17 @@ punycode@^2.1.0:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.3.1.tgz#027422e2faec0b25e1549c3e1bd8309b9133b6e5"
   integrity sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==
 
-qr.js@^0.0.0:
-  version "0.0.0"
-  resolved "https://registry.yarnpkg.com/qr.js/-/qr.js-0.0.0.tgz#cace86386f59a0db8050fa90d9b6b0e88a1e364f"
-  integrity sha512-c4iYnWb+k2E+vYpRimHqSu575b1/wKl4XFeJGpFmrJQz5I88v9aY2czh7s0w36srfCM1sXgC/xpoJz5dJfq+OQ==
+qr-code-styling@^1.6.0-rc.1:
+  version "1.8.4"
+  resolved "https://registry.yarnpkg.com/qr-code-styling/-/qr-code-styling-1.8.4.tgz#9168f379cc8f239c184951d5c1ad8a32ad0b19f9"
+  integrity sha512-uxykNuvXaPDK/jGDERDIdDvvocefbHu1oxVYi6K87FUdPPAezkBdcIeFJ8XVX2HSsyLFINile5uzfOMYpGu5ZA==
+  dependencies:
+    qrcode-generator "^1.4.4"
+
+qrcode-generator@^1.4.4:
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/qrcode-generator/-/qrcode-generator-1.4.4.tgz#63f771224854759329a99048806a53ed278740e7"
+  integrity sha512-HM7yY8O2ilqhmULxGMpcHSF1EhJJ9yBj8gvDEuZ6M+KGJ0YY2hKpnXvRD+hZPLrDVck3ExIGhmPtSdcjC+guuw==
 
 qs@6.11.0:
   version "6.11.0"
@@ -3789,11 +3781,6 @@ supports-preserve-symlinks-flag@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
-
-svgpath@2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/svgpath/-/svgpath-2.3.0.tgz#efc76705deab6bd1774e9f0ed038bb661b5e4d23"
-  integrity sha512-N/4UDu3Y2ICik0daMmFW1tplw0XPs1nVIEVYkTiQfj9/JQZeEtAKaSYwheCwje1I4pQ5r22fGpoaNIvGgsyJyg==
 
 system-architecture@^0.1.0:
   version "0.1.0"

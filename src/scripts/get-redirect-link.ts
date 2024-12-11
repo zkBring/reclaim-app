@@ -26,17 +26,17 @@ export default async function getLinkByMultiQR(
     )
 
     const {
-      reclaimOn,
       reclaimVerificationURL
     } = campaignData
 
-    if (reclaimOn) {
+    if (reclaimVerificationURL) {
       if (mobile()) {
         window.location.href = reclaimVerificationURL
       } else {
         linkRedirectCallback(reclaimVerificationURL)
       }
     }
+    
 
   } catch (err: any) {
     if (axios.isAxiosError(err)) {

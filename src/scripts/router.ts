@@ -3,7 +3,10 @@ import computeScanAddress from './compute-scan-address'
 import getRedirectLink from './get-redirect-link'
 import getReclaimRedirectLink from './get-reclaim-redirect-link'
 import { TApi, TError } from './types'
-import createQRX from '@qr-x/vanilla'
+import QRCodeStyling from 'qr-code-styling'
+import LinkdropIcon from '../images/linkdrop-qr.png'
+
+
 const templateLoading = document.getElementById("loader")
 const templateRedirect = document.getElementById("redirect")
 const templateQR = document.getElementById("qr")
@@ -95,15 +98,35 @@ const routes = [
           // @ts-ignore          
           const templateClone = templateQR.content.cloneNode(true).querySelector('.qr')
           const qrContainer = templateClone.querySelector('.qr__item')
-          const qr = createQRX({
+
+          const qr = new QRCodeStyling({
+            width: 350,
+            height: 350,
             data: location,
-            shapes: {
-              body: 'square',
-              eyeball: 'square',
-              eyeframe: 'square',
+            image: LinkdropIcon, 
+            cornersSquareOptions: {
+              color: "#0C5EFF",
+              type: 'extra-rounded'
             },
+            cornersDotOptions: {
+              color: "#0C5EFF",
+              type: 'square'
+            },
+            dotsOptions: {
+              color: "#9D9D9D",
+              type: "dots"
+            },
+            backgroundOptions: {
+              color: "#FFF"
+            },
+            imageOptions: {
+              margin: 5,
+              imageSize: 0.5,
+              crossOrigin: 'anonymous',
+            }
           })
-          qrContainer.appendChild(qr)
+
+          qr.append(qrContainer)
 
           console.log(location)
           content.append(templateClone)
