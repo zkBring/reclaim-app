@@ -33,7 +33,7 @@ export default async function getLinkByMultiQR(
       if (mobile()) {
         window.location.href = reclaimVerificationURL
       } else {
-        linkRedirectCallback(reclaimVerificationURL)
+        linkRedirectCallback(window.location.href)
       }
     }
     
