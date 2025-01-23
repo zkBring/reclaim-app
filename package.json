@@ -22,12 +22,13 @@
     "webpack-dev-server": "^5.0.4"
   },
   "dependencies": {
-    "qr-code-styling": "^1.6.0-rc.1",
     "@reclaimprotocol/js-sdk": "^2.1.2",
     "@walletconnect/utils": "2.0.0-beta.100",
     "axios": "^1.6.8",
+    "dotenv": "^16.4.7",
     "ethers": "^5.5.1",
     "is-mobile": "^5.0.0",
+    "qr-code-styling": "^1.6.0-rc.1",
     "vanilla-routing": "^0.0.4"
   },
   "proxy": "http://localhost:3000"

@@ -1,8 +1,10 @@
 import { TApi } from '../types'
-import {
-  devApiKey,
-  apiKey
-} from '../../config'
+
+const {
+  API_KEY_DEV,
+  API_KEY_PROD
+} = process.env
+
 type TDefineApiHeaders = (
   api: TApi
 ) => Record<string, string>
@@ -13,9 +15,9 @@ const defineApiHeaders: TDefineApiHeaders = (
   const headers: Record<string, string> = {}
 
   if (api === 'dev') {
-    headers['authorization'] = `Bearer ${devApiKey}`
+    headers['authorization'] = `Bearer ${API_KEY_DEV}`
   } else {
-    headers['authorization'] = `Bearer ${apiKey}`
+    headers['authorization'] = `Bearer ${API_KEY_PROD}`
   }
 
   return headers
