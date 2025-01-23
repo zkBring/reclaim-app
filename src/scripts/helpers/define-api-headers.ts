@@ -5,11 +5,6 @@ const {
   API_KEY_PROD
 } = process.env
 
-console.log({
-  API_KEY_DEV,
-  API_KEY_PROD
-})
-
 type TDefineApiHeaders = (
   api: TApi
 ) => Record<string, string>
