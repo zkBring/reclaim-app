@@ -2,9 +2,6 @@ export const dashboardServerUrl = 'https://dashboard-api.linkdrop.io'
 export const devDashboardServerUrl = 'https://linkdrop-api-staging-715c814.zuplo.app'
 export const testnetsDashboardServerUrl = 'https://testnets.dashboard-api.linkdrop.io'
 
-export const devApiKey = 'zpka_1365718c556e4f28904657c528730556_3f9a6532'
-export const apiKey = 'zpka_25a34f93d60440229a85b206b8b9cd14_3695452f'
-
 type TCustomClaimApps = Record<string, string>
 
 export const customClaimApps: TCustomClaimApps = {
