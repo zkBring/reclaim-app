@@ -1,9 +1,9 @@
 import { TApi } from "../types"
-import {
-  dashboardServerUrl,
-  devDashboardServerUrl,
-  testnetsDashboardServerUrl
-} from "../../config"
+const {
+  API_URL_PROD,
+  API_URL_DEV,
+  API_URL_TESTNETS
+} = process.env
 
 type TDefineApiURL = (
   apiType: TApi
@@ -12,11 +12,11 @@ type TDefineApiURL = (
 const defineApiURL: TDefineApiURL = (apiType) => {
   switch (apiType) {
     case 'dev':
-      return devDashboardServerUrl
+      return API_URL_DEV
     case 'testnets':
-      return testnetsDashboardServerUrl
+      return API_URL_TESTNETS
     default:
-      return dashboardServerUrl
+      return API_URL_PROD
   }
 }
 
