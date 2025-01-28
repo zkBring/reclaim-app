@@ -15,6 +15,7 @@
 @import './title.css';
 @import './image.css';
 @import './list.css';
+@import './preview.css';
 
 html, .page {
   margin: 0;

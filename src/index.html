@@ -21,14 +21,14 @@
 </head>
 <body class="page">
   <header class="header">
-    <img class="header__logo" src='<%= require("./images/logo.png") %>' alt="Application Logo" />
+    <img class="header__logo" src='<%= require("./images/logo.svg") %>' alt="Application Logo" />
   </header>
   <section data-vanilla-route-ele="router-wrap" class="content">
 
   </section>
 
   <footer class="footer">
-    <img class="footer__logo" src='<%= require("./images/lock.png") %>' alt="Lock" />
+    <img class="footer__logo" src='<%= require("./images/lock.svg") %>' alt="Lock" />
     Secured by zkTLS webproofs
   </footer>
 
@@ -61,11 +61,11 @@
 
       <div class="verification-logo">
         <div class="verification-logo__item">
-          <img class="verification-logo__image" src='<%= require("./images/reclaim.png") %>'>
+          <img class="verification-logo__image" src='<%= require("./images/reclaim.svg") %>'>
         </div>
         <img class="verification-logo__arrows" src='<%= require("./images/arrows.png") %>'' alt="arrow">
         <div class="verification-logo__item">
-          <img class="verification-logo__image" src='<%= require("./images/inst.png") %>'> 
+          <img class="verification-logo__image" src='<%= require("./images/inst.svg") %>'> 
         </div>
       </div>
       <p class="text">
@@ -91,11 +91,11 @@
     <div class="container">
       <div class="verification-logo">
         <div class="verification-logo__item">
-          <img class="verification-logo__image" src='<%= require("./images/reclaim.png") %>'>
+          <img class="verification-logo__image" src='<%= require("./images/reclaim.svg") %>'>
         </div>
         <img class="verification-logo__arrows" src='<%= require("./images/arrows.png") %>'' alt="arrow">
         <div class="verification-logo__item">
-          <img class="verification-logo__image" src='<%= require("./images/inst.png") %>'> 
+          <img class="verification-logo__image" src='<%= require("./images/inst.svg") %>'> 
         </div>
       </div>
       <p class="text">
@@ -120,7 +120,7 @@
   <!-- how it works popup -->
   <template id="popup">
     <div class="popup">
-      <img class="image image_type_book" src='<%= require("./images/book.png") %>' alt="book">
+      <img class="image image_type_book" src='<%= require("./images/book.svg") %>' alt="book">
       <h3 class="title">How it works</h3>
       <p class="text">
         Your data stays private throughout the entire process. The proof only shows you meet the requirements, without exposing any sensitive information. All happening locally, keeping your data protected:
@@ -139,6 +139,24 @@
 
       <button class="button button_type_secondary button_close">
         Back
+      </button>
+    </div>
+  </template>
+
+  <template id="preview">
+    <div class="popup preview popup_open">
+      <h3 class="preview__title">
+        YOU WERE SENT
+        <img src="" class="preview__image">
+        <span class="preview__symbol"></span>
+      </h3>
+      <p class="preview__amount"></p>
+
+      <p class="text">
+        The tokens are waiting for you.<br>Claim them now, it’s free.
+      </p>
+      <button class="button preview__button">
+        Claim
       </button>
     </div>
   </template>
