@@ -1,15 +1,12 @@
 import { HashRoute, routeLocation, Router } from 'vanilla-routing'
 import computeScanAddress from './compute-scan-address'
 import getRedirectLink from './get-redirect-link'
-import getReclaimRedirectLink from './get-reclaim-redirect-link'
 import { TApi, TError } from './types'
 import QRCodeStyling from 'qr-code-styling'
-import LinkdropIcon from '../images/linkdrop-qr.png'
-
-
 const templateLoading = document.getElementById("loader")
-const templateRedirect = document.getElementById("redirect")
-const templateQR = document.getElementById("qr")
+const templateDesktop = document.getElementById("desktop")
+const templateMobile = document.getElementById("mobile")
+const templateInstructionPopup = document.getElementById("popup")
 
 const templateError = document.getElementById("error")
 const content = document.querySelector(".content")
@@ -96,81 +93,83 @@ const routes = [
         (location) => {
           content.innerHTML = ''
           // @ts-ignore          
-          const templateClone = templateQR.content.cloneNode(true).querySelector('.qr')
-          const qrContainer = templateClone.querySelector('.qr__item')
+          const templateClone = templateDesktop.content.cloneNode(true).querySelector('.container')
+          // @ts-ignore          
+          const popupTemplateClone = templateInstructionPopup.content.cloneNode(true).querySelector('.popup')
+          const buttonInstruction = templateClone.querySelector('.button_instruction')
 
-          const qr = new QRCodeStyling({
-            width: 350,
-            height: 350,
-            data: location,
-            image: LinkdropIcon, 
-            cornersSquareOptions: {
-              color: "#0C5EFF",
-              type: 'extra-rounded'
-            },
-            cornersDotOptions: {
-              color: "#0C5EFF",
-              type: 'square'
-            },
-            dotsOptions: {
-              color: "#9D9D9D",
-              type: "dots"
-            },
-            backgroundOptions: {
-              color: "#FFF"
-            },
-            imageOptions: {
-              margin: 5,
-              imageSize: 0.5,
-              crossOrigin: 'anonymous',
-            }
-          })
+          const buttonQR = templateClone.querySelector('.button_qr')
 
-          qr.append(qrContainer)
+          const buttonQRCallback = () => {
+            const popup = templateClone.querySelector('.popup_qr')
+            popup.classList.add('popup_open')
+            const qrContainer = templateClone.querySelector('.qr')
+            qrContainer.innerHTML = ''
+            const qr = new QRCodeStyling({
+              width: 222,
+              height: 222,
+              data: location,
+              cornersSquareOptions: {
+                color: "#FFF",
+                type: 'square'
+              },
+              cornersDotOptions: {
+                color: "#FFF",
+                type: 'square'
+              },
+              dotsOptions: {
+                color: "#FFF",
+                type: "square"
+              },
+              backgroundOptions: {
+                color: "#000"
+              },
+              imageOptions: {
+                margin: 5,
+                imageSize: 0.5,
+                crossOrigin: 'anonymous',
+              }
+            })
 
-          console.log(location)
+            const closeButton = popup.querySelector('.button_close')
+            closeButton.addEventListener('click', () => {
+              popup.classList.remove('popup_open')
+            })
+            qr.append(qrContainer)
+          }
+
+          const buttonInstructionCallback = () => {
+            popupTemplateClone.classList.add('popup_open')
+            const closeButton = popupTemplateClone.querySelector('.button_close')
+            closeButton.addEventListener('click', () => {
+              popupTemplateClone.classList.remove('popup_open')
+            })
+          }
+
+          buttonQR.addEventListener('click', buttonQRCallback)
+          buttonInstruction.addEventListener('click', buttonInstructionCallback)
+          templateClone.append(popupTemplateClone)
           content.append(templateClone)
         },
-        (error) => {
-          content.innerHTML = ''
-          const errorElement = createErrorScreen(
-            error
-          )
-          content.append(errorElement)
-        }
-      )
 
-      content.innerHTML = ''
-      // @ts-ignore
-      const templateClone = templateLoading.content.cloneNode(true).querySelector('.loader')
-      return templateClone
-    }
-  }, ,
-  {
-    pathname: '/reclaim/:multiscanQRId/:reclaimSessionId/:multiscanQREncCode/verification-complete',
-    element: () => {
-      content.innerHTML = ''
-      const location = routeLocation()
-      const { params: {
-        multiscanQRId,
-        reclaimSessionId,
-        multiscanQREncCode
-      } } = location
 
-      const reclaimProof = ""
-
-      getReclaimRedirectLink(
-        multiscanQRId,
-        reclaimSessionId,
-        multiscanQREncCode,
-        (location.search.api as TApi) || '',
+        // for mobile application
         (location) => {
           content.innerHTML = ''
           // @ts-ignore          
-          const templateClone = templateRedirect.content.cloneNode(true).querySelector('.redirect')
-          const link = templateClone.querySelector('.redirect__link')
-          link.setAttribute('href', location)
-          console.log(location)
+          const templateClone = templateMobile.content.cloneNode(true).querySelector('.container')
+          // @ts-ignore          
+          const popupTemplateClone = templateInstructionPopup.content.cloneNode(true).querySelector('.popup')
+          const buttonInstruction = templateClone.querySelector('.button_instruction')
+          const buttonInstructionCallback = () => {
+            popupTemplateClone.classList.add('popup_open')
+            const closeButton = popupTemplateClone.querySelector('.button_close')
+            closeButton.addEventListener('click', () => {
+              popupTemplateClone.classList.remove('popup_open')
+            })
+          }
+          buttonInstruction.addEventListener('click', buttonInstructionCallback)
+          templateClone.append(popupTemplateClone)
           content.append(templateClone)
         },
         (error) => {

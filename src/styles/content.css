@@ -1,0 +1,20 @@
+
+.content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 60px 80px;
+  border: 1px solid var(--border-color);
+  max-width: 500px;
+  margin: 0 auto;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+
+@media (max-width: 500px) {
+  .content {
+    padding: 20px 20px;
+  }
+}

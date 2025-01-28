@@ -1,0 +1,21 @@
+.verification-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 auto 40px;
+  justify-content: center;
+}
+
+.verification-logo__item {
+  width: 93px;
+  height: 93px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-secondary);
+}
+
+.verification-logo__image {
+  max-width: 36px;
+}

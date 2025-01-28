@@ -1,0 +1,9 @@
+.image {
+
+}
+
+.image_type_book {
+  max-width: 44px;
+  display: block;
+  margin: 0 auto 20px;
+}

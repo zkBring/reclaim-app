@@ -1,13 +1,14 @@
-.header {
+.footer {
   position: relative;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 43px;
-  padding: 50px 0;
+  gap: 6px;
+  padding: 50px 0 ;
+  font-size: 14px;
 }
 
-.header__logo {
-  max-width: 138px;
+.footer__logo {
+  max-width: 13px;
 }

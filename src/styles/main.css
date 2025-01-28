@@ -1,25 +1,30 @@
+@import './variables.css';
 @import '../fonts/index.css';
 @import './loader.css';
 @import './redirect.css';
 @import './qr.css';
 @import './error.css';
 @import './header.css';
+@import './footer.css';
+@import './content.css';
+@import './text.css';
+@import './button.css';
+@import './verification-logo.css';
+@import './popup.css';
+@import './container.css';
+@import './title.css';
+@import './image.css';
+@import './list.css';
 
 html, .page {
   margin: 0;
   min-height: 100vh;
   font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  background: var(--color-background);
+  color: var(--text-color-primary);
 }
 
 * {
   box-sizing: border-box;
-}
-
-.content {
-  min-height: calc(100vh - 117px);
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  padding: 0px 20px 50px;
 }
 

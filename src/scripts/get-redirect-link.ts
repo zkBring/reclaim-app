@@ -1,21 +1,17 @@
-import { ethers } from 'ethers'
 import {
-  getMultiQRData,
   getMultiQRCampaignData
 } from './api'
-import * as wccrypto from '@walletconnect/utils/dist/esm'
 import axios from 'axios'
 import { TError } from './types'
 import { TApi } from './types'
 import mobile from 'is-mobile'
-
-import { customClaimApps, customClaimAppsForToken } from '../config'
 
 export default async function getLinkByMultiQR(
   multiscanQRId: string,
   multiscanQREncCode: string,
   api: TApi,
   linkRedirectCallback?: (location: string) => void,
+  linkRedirectMobileCallback?: (location: string) => void,
   errorCallback?: (error_name: TError) => void,
 ) {
   try {
@@ -31,8 +27,10 @@ export default async function getLinkByMultiQR(
 
     if (reclaimVerificationURL) {
       if (mobile()) {
-        window.location.href = reclaimVerificationURL
+        // show button
+        linkRedirectMobileCallback(reclaimVerificationURL)
       } else {
+        // show qr
         linkRedirectCallback(window.location.href)
       }
     }
