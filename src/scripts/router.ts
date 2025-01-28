@@ -161,6 +161,8 @@ const routes = [
           // @ts-ignore          
           const popupTemplateClone = templateInstructionPopup.content.cloneNode(true).querySelector('.popup')
           const buttonInstruction = templateClone.querySelector('.button_instruction')
+          const buttonProof = templateClone.querySelector('.button_redirect')
+
           const buttonInstructionCallback = () => {
             popupTemplateClone.classList.add('popup_open')
             const closeButton = popupTemplateClone.querySelector('.button_close')
@@ -168,6 +170,12 @@ const routes = [
               popupTemplateClone.classList.remove('popup_open')
             })
           }
+
+          const buttonProofCallback = () => {
+            window.location.href = location
+          }
+          
+          buttonProof.addEventListener('click', buttonProofCallback)
           buttonInstruction.addEventListener('click', buttonInstructionCallback)
           templateClone.append(popupTemplateClone)
           content.append(templateClone)
