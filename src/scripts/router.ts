@@ -3,6 +3,7 @@ import computeScanAddress from './compute-scan-address'
 import getRedirectLink from './get-redirect-link'
 import { TApi, TError } from './types'
 import QRCodeStyling from 'qr-code-styling'
+import getReclaimRedirectLink from './get-reclaim-redirect-link'
 const templateLoading = document.getElementById("loader")
 const templateDesktop = document.getElementById("desktop")
 const templateMobile = document.getElementById("mobile")
@@ -217,6 +218,46 @@ const routes = [
           )
           
           content.append(previewPopup)
+        },
+        (error) => {
+          content.innerHTML = ''
+          const errorElement = createErrorScreen(
+            error
+          )
+          content.append(errorElement)
+        }
+      )
+
+      content.innerHTML = ''
+      // @ts-ignore
+      const templateClone = templateLoading.content.cloneNode(true).querySelector('.loader')
+      return templateClone
+    }
+  }, {
+    pathname: '/reclaim/:multiscanQRId/:reclaimSessionId/:multiscanQREncCode/verification-complete',
+    element: () => {
+      content.innerHTML = ''
+      const location = routeLocation()
+      const { params: {
+        multiscanQRId,
+        reclaimSessionId,
+        multiscanQREncCode
+      } } = location
+
+
+      getReclaimRedirectLink(
+        multiscanQRId,
+        reclaimSessionId,
+        multiscanQREncCode,
+        (location.search.api as TApi) || '',
+        (location) => {
+          content.innerHTML = ''
+          // @ts-ignore          
+          const templateClone = templateRedirect.content.cloneNode(true).querySelector('.redirect')
+          const link = templateClone.querySelector('.redirect__link')
+          link.setAttribute('href', location)
+          console.log(location)
+          content.append(templateClone)
         },
         (error) => {
           content.innerHTML = ''
