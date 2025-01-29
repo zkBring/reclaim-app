@@ -15,6 +15,69 @@
 
   <style>
 
+    html, .page {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Inter', 'Helvetica Neue', sans-serif;
+      background: #0A0B0D;
+      color: #696F7D;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+
+    .header {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 43px;
+      padding: 50px 0;
+    }
+
+    .header__logo {
+      max-width: 138px;
+    }
+
+    .footer {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      padding: 50px 0 ;
+      font-size: 14px;
+    }
+
+    .footer__logo {
+      max-width: 13px;
+    }
+
+    .content {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      padding: 60px 80px;
+      border: 1px solid #1E1E1E;
+      max-width: 500px;
+      margin: 0 auto;
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+      min-height: 450px;
+    }
+
+
+    @media (max-width: 500px) {
+      .content {
+        padding: 30px;
+      }
+    }
+  
   </style>
   <title>You have received a digital asset, click to claim it</title>
   
