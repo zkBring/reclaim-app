@@ -8,7 +8,7 @@ const templateLoading = document.getElementById("loader")
 const templateDesktop = document.getElementById("desktop")
 const templateMobile = document.getElementById("mobile")
 const templateInstructionPopup = document.getElementById("popup")
-
+const templateRedirect = document.getElementById("redirect")
 const templateError = document.getElementById("error")
 const content = document.querySelector(".content")
 import createPreviewPopup from './create-preview-popup'
