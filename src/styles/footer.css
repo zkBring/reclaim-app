@@ -12,3 +12,9 @@
 .footer__logo {
   max-width: 13px;
 }
+
+@media (max-width: 500px) {
+  .footer {
+    padding: 20px;
+  }
+}

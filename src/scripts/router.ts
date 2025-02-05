@@ -13,7 +13,6 @@ const templateError = document.getElementById("error")
 const content = document.querySelector(".content")
 import createPreviewPopup from './create-preview-popup'
 
-
 const createErrorScreen = (
   error: TError
 ) => {
@@ -22,7 +21,11 @@ const createErrorScreen = (
 
   // @ts-ignore
   const errorScreen = templateError.content.cloneNode(true).querySelector('.error')
-  const titleElement = errorScreen.querySelector('.error__title')
+  const titleElement = errorScreen.querySelector('.text')
+  const buttonElement = errorScreen.querySelector('.button')
+  buttonElement.onclick = () => {
+    window.location.reload()
+  }
 
   switch (error) {
     case 'qr_campaign_finished':
@@ -49,8 +52,11 @@ const createErrorScreen = (
     case 'qr_not_found':
       titleElement.innerText = 'Asset does not exist'
       break
+    case 'qr_proof_verification_failed':
+      titleElement.innerText = 'Asset does not exist'
+
     default:
-      titleElement.innerText = 'Something went wrong'
+      titleElement.innerText = 'Something went wrong.\nWe’re aware and working to fix it.\nPlease try again later.'
   }
 
   return errorScreen
@@ -103,7 +109,6 @@ const routes = [
              // @ts-ignore          
             const templateClone = templateDesktop.content.cloneNode(true).querySelector('.container')
 
-            console.log('renderijng...')
             // @ts-ignore          
             const popupTemplateClone = templateInstructionPopup.content.cloneNode(true).querySelector('.popup')
             const buttonInstruction = templateClone.querySelector('.button_instruction')
@@ -254,9 +259,11 @@ const routes = [
           content.innerHTML = ''
           // @ts-ignore          
           const templateClone = templateRedirect.content.cloneNode(true).querySelector('.redirect')
-          const link = templateClone.querySelector('.redirect__link')
-          link.setAttribute('href', location)
-          console.log(location)
+          const button = templateClone.querySelector('.button')
+          button.onclick = () => {
+            window.open(location, '_blank')
+          }
+          // window.location.href = location
           content.append(templateClone)
         },
         (error) => {
@@ -272,6 +279,15 @@ const routes = [
       // @ts-ignore
       const templateClone = templateLoading.content.cloneNode(true).querySelector('.loader')
       return templateClone
+    }
+  }, {
+    pathname: '/verification-failed',
+    element: () => {
+      content.innerHTML = ''
+      const errorElement = createErrorScreen(
+        'qr_proof_verification_failed'
+      )
+      content.append(errorElement)
     }
   }
 ]

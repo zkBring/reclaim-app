@@ -16,6 +16,7 @@
 
 @media (max-width: 500px) {
   .content {
-    padding: 30px;
+    padding: 60px 20px;
+    margin: 0 20px;
   }
 }

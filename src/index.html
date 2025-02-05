@@ -101,8 +101,13 @@
 
   <template id="error">
     <div class="error">
-      <img class="error__image" src='<%= require("./images/qr-error.png") %>'>
-      <h2 class="error__title"></h2>
+      <div class="error__content">
+        <img class="error__image" src='<%= require("./images/error.svg") %>'>
+        <h2 class="text"></h2>
+      </div>
+      <button class="button button_type_secondary">
+        Retry
+      </button>
     </div>
   </template>
 
@@ -226,10 +231,15 @@
 
   <template id="redirect">
     <div class="redirect">
-      <img class="redirect__image" src='<%= require("./images/redirect-image.png") %>' />
-      <h1 class="title">
-        You are about to claim tokens. If you are not automatically redirected, please go <a class="redirect__link" href=''>here</a>
-      </h1>
+      <div class="redirect__content">
+        <img class="redirect__image" src='<%= require("./images/redirect.svg") %>' />
+        <h1 class="text">
+          You are about to claim tokens. If you are not redirected, click the button below:
+        </h1>
+      </div>
+      <button class="button">
+        Continue
+      </button>
     </div>
   </template>
 </body>

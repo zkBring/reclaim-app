@@ -4,9 +4,10 @@
   flex-direction: column;
   max-width: 343px;
   margin: 0 auto;
-  justify-content: center;
+  justify-content: space-between;
   text-align: center;
   height: 100%;
+  flex: 1;
 }
 
 .redirect__title {
@@ -21,9 +22,7 @@
   margin-bottom: 24px;
 }
 
-.redirect__link,
-.redirect__link:active,
-.redirect__link:hover,
-.redirect__link:visited {
-  color: #0C5EFF;
+.redirect__content {
+  flex: 1;
 }
+

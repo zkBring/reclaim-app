@@ -27,9 +27,7 @@ export default async function getReclaimRedirectLink(
     if (success && encrypted_claim_link) {
       const decryptKey = ethers.utils.id(multiscanQREncCode)
       const linkDecrypted = wccrypto.decrypt({ encoded: encrypted_claim_link, symKey: decryptKey.replace('0x', '') })
-
       linkRedirectCallback && linkRedirectCallback(linkDecrypted)
-      window.location.href = linkDecrypted
     }
   } catch (err: any) {
     if (axios.isAxiosError(err)) {

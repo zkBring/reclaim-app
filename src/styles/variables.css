@@ -5,4 +5,6 @@
   --color-primary: #0053FE;
   --color-secondary: #1B1C1E;
   --color-background: #0A0B0D;
+
+  --color-gradient: radial-gradient(214.52% 214.52% at 119.35% -87.1%, #4F4F4F 0%, #202020 63%, #0F0F0F 100%);
 }
