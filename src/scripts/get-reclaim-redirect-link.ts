@@ -37,7 +37,12 @@ export default async function getReclaimRedirectLink(
           errorCallback('qr_error')
         }
       } else if (err.response?.status === 404) {
-        errorCallback('qr_not_found')
+        const { data } = err.response
+        if (data.errors.includes("REACLAIM_VERIFICATION_NOT_EXISTS")) {
+          errorCallback('qr_proof_verification_failed')
+        } else {
+          errorCallback('qr_not_found')
+        }
       } else if (err.response?.status === 500) {
         errorCallback('qr_error')
       } else if (err.response?.status === 403) {
