@@ -15,22 +15,19 @@ import createPreviewPopup from './create-preview-popup'
 
 const createErrorScreen = (
   error: TError,
-  buttonText?: string,
-  buttonAction?: () => void
+  support?: boolean
 ) => {
-
-  console.log({ error })
-
   // @ts-ignore
   const errorScreen = templateError.content.cloneNode(true).querySelector('.error')
   const titleElement = errorScreen.querySelector('.text')
   const buttonElement = errorScreen.querySelector('.button')
-  if (buttonText) {
-    buttonElement.innerText = buttonText
+  if (support) {
+    buttonElement.innerText = 'Contact support'
   }
+
   buttonElement.onclick = () => {
-    if (buttonAction) {
-      buttonAction()
+    if (support) {
+      window.open('https://t.me/MikhailDobs', '_blank')
     } else {
       window.location.reload()
     }
@@ -281,10 +278,7 @@ const routes = [
           content.innerHTML = ''
           const errorElement = createErrorScreen(
             error,
-            error === 'qr_proof_verification_failed' ? 'Contact support' : undefined,
-            error === 'qr_proof_verification_failed' ? () => {
-              window.open('https://t.me/MikhailDobs', '_blank')
-            } : undefined
+            error === 'qr_proof_verification_failed' || error === 'qr_already_claimed'
           )
           content.append(errorElement)
         }
