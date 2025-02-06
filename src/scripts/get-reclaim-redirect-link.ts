@@ -51,7 +51,7 @@ export default async function getReclaimRedirectLink(
 
         if (data.error.includes("Claim is over.")) {
           errorCallback('qr_campaign_finished')
-        } else if (data.error.includes("USER_ALREADY_CLAIMED")) {
+        } else if (data.errors.includes("USER_ALREADY_CLAIMED")) {
           errorCallback('qr_already_claimed')
         } else if (data.error.includes("Claim has not started yet.")) {
           errorCallback('qr_campaign_not_started')
