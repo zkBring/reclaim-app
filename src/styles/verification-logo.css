@@ -13,7 +13,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: var(--color-gradient);
+  background-color: var(--color-background-secondary);
 }
 
 .verification-logo__image {

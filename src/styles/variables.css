@@ -1,10 +1,11 @@
 :root {
-  --text-color-primary: #696F7D;
+  --text-color-primary: #BCBCBC;
   --text-color-secondary: #FFF;
+  --text-color-additional: #4D4D4E;
   --border-color: #1E1E1E;
   --color-primary: #0053FE;
   --color-secondary: #1B1C1E;
-  --color-background: #0A0B0D;
+  --color-background-primary: #0A0B0D;
 
-  --color-gradient: radial-gradient(214.52% 214.52% at 119.35% -87.1%, #4F4F4F 0%, #202020 63%, #0F0F0F 100%);
+  --color-background-secondary: #1A1A1A;
 }

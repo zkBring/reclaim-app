@@ -14,7 +14,9 @@ const content = document.querySelector(".content")
 import createPreviewPopup from './create-preview-popup'
 
 const createErrorScreen = (
-  error: TError
+  error: TError,
+  buttonText?: string,
+  buttonAction?: () => void
 ) => {
 
   console.log({ error })
@@ -23,8 +25,15 @@ const createErrorScreen = (
   const errorScreen = templateError.content.cloneNode(true).querySelector('.error')
   const titleElement = errorScreen.querySelector('.text')
   const buttonElement = errorScreen.querySelector('.button')
+  if (buttonText) {
+    buttonElement.innerText = buttonText
+  }
   buttonElement.onclick = () => {
-    window.location.reload()
+    if (buttonAction) {
+      buttonAction()
+    } else {
+      window.location.reload()
+    }
   }
 
   switch (error) {
@@ -53,10 +62,9 @@ const createErrorScreen = (
       titleElement.innerText = 'Asset does not exist'
       break
     case 'qr_proof_verification_failed':
-      titleElement.innerText = 'Asset does not exist'
-
+      titleElement.innerText = 'Verification failed:\nIncorrect Instagram account has been\nfollowed. Please make sure to verify that\nyou follow the correct Instagram account.'
     default:
-      titleElement.innerText = 'Something went wrong.\nWe’re aware and working to fix it.\nPlease try again later.'
+      titleElement.innerText = 'Something went wrong.\nPlease try again later or contact us.'
   }
 
   return errorScreen
@@ -269,7 +277,11 @@ const routes = [
         (error) => {
           content.innerHTML = ''
           const errorElement = createErrorScreen(
-            error
+            error,
+            error === 'qr_proof_verification_failed' ? 'Contact support' : undefined,
+            error === 'qr_proof_verification_failed' ? () => {
+              window.open('https://t.me/MikhailDobs', '_blank')
+            } : undefined
           )
           content.append(errorElement)
         }
@@ -279,15 +291,6 @@ const routes = [
       // @ts-ignore
       const templateClone = templateLoading.content.cloneNode(true).querySelector('.loader')
       return templateClone
-    }
-  }, {
-    pathname: '/verification-failed',
-    element: () => {
-      content.innerHTML = ''
-      const errorElement = createErrorScreen(
-        'qr_proof_verification_failed'
-      )
-      content.append(errorElement)
     }
   }
 ]

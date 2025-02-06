@@ -5,17 +5,15 @@
        url('./Inter-Regular.woff') format('woff');
 }
 
-
 @font-face {
-  font-family: 'Inter';
-  font-weight: 500;
-  src: url('./Inter-Medium.woff2') format('woff2'),
-       url('./Inter-Medium.woff') format('woff');
+  font-family: 'FK Grotesk';
+  font-weight: 400;
+  src: url('./FKRasterGrotesk-Sharp.woff2') format('woff2')
 }
 
 @font-face {
-  font-family: 'Inter';
-  font-weight: 600;
-  src: url('./Inter-SemiBold.woff2') format('woff2'),
-       url('./Inter-SemiBold.woff') format('woff');
+  font-family: 'SF Mono';
+  font-weight: 400;
+  src: url('./sf-mono-regular.woff') format('woff'),
+       url('./sf-mono-regular.woff2') format('woff2')
 }

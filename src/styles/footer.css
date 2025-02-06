@@ -6,6 +6,7 @@
   align-items: center;
   gap: 6px;
   padding: 50px 0 ;
+  color: var(--text-color-additional);
   font-size: 14px;
 }
 

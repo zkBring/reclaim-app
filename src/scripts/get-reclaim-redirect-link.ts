@@ -16,7 +16,6 @@ export default async function getReclaimRedirectLink(
   errorCallback?: (error_name: TError) => void,
 ) {
   try {
-
     const { data } = await popReclaimLink(
       multiscanQRId,
       reclaimSessionId,
@@ -55,6 +54,14 @@ export default async function getReclaimRedirectLink(
           errorCallback('qr_campaign_not_active')
         } else if (data.errors.includes("RECEIVER_NOT_WHITELISTED")) {
           errorCallback('qr_campaign_not_eligible')
+        } else if (
+          data.errors.includes("RECLAIM_VERIFICATION_PENDING") ||
+          data.errors.includes("USER_SHOULD_FOLLOW_TO_CLAIM") ||
+          data.errors.includes("USER_SHOULD_FOLLOW_CORRECT_ACCOUNT") ||
+          data.errors.includes("USER_ALREADY_CLAIMED")
+        ) {
+          errorCallback('qr_proof_verification_failed')
+
         } else {
           errorCallback('qr_error')
         }

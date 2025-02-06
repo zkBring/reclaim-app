@@ -12,10 +12,17 @@
   text-align: center;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: var(--text-color-secondary);
+  font-family: 'FK Grotesk', 'Inter', sans-serif;
 }
 
 .preview__button {
   
+}
+
+.preview__image {
+  position: relative;
+  top: 2px;
 }
 
 .preview__title {
@@ -23,4 +30,5 @@
   font-size: 16px;
   text-align: center;
   margin: 0 0 36px;
+  font-family: 'SF Mono', 'Inter', sans-serif;
 }
