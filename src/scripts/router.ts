@@ -52,6 +52,9 @@ const createErrorScreen = (
     case 'qr_incorrect_parameter':
       titleElement.innerText = 'Wrong request'
       break
+    case 'qr_already_claimed':
+      titleElement.innerText = 'User already claimed tokens'
+      break
     case 'qr_no_connection':
       titleElement.innerText = 'Seems you\'re offline'
       break

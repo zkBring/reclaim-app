@@ -8,7 +8,8 @@ type TError =
   'qr_campaign_not_active' |
   'qr_campaign_not_eligible' |
   'qr_incorrect_parameter' |
-  'qr_proof_verification_failed'
+  'qr_proof_verification_failed' |
+  'qr_already_claimed'
 
 
   export default TError
