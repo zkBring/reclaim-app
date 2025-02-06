@@ -27,7 +27,7 @@ const createErrorScreen = (
 
   buttonElement.onclick = () => {
     if (support) {
-      window.open('https://t.me/MikhailDobs', '_blank')
+      window.open('https://x.com/zkbring', '_blank')
     } else {
       window.location.reload()
     }
