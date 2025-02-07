@@ -13,7 +13,10 @@ export default async function getReclaimRedirectLink(
   multiscanQREncCode: string,
   api: TApi,
   linkRedirectCallback?: (location: string) => void,
-  errorCallback?: (error_name: TError) => void,
+  errorCallback?: (
+    error_name: TError,
+    error_text?: string
+  ) => void,
 ) {
   try {
     const { data } = await popReclaimLink(
@@ -39,9 +42,9 @@ export default async function getReclaimRedirectLink(
       } else if (err.response?.status === 404) {
         const { data } = err.response
         if (data.errors.includes("REACLAIM_VERIFICATION_NOT_EXISTS")) {
-          errorCallback('qr_proof_verification_failed')
+          errorCallback('qr_proof_verification_failed', data.error)
         } else {
-          errorCallback('qr_not_found')
+          errorCallback('qr_not_found', data.error)
         }
       } else if (err.response?.status === 500) {
         errorCallback('qr_error')
@@ -50,27 +53,26 @@ export default async function getReclaimRedirectLink(
         const { data } = err.response
 
         if (data.error.includes("Claim is over.")) {
-          errorCallback('qr_campaign_finished')
+          errorCallback('qr_campaign_finished', data.error)
         } else if (data.errors.includes("USER_ALREADY_CLAIMED")) {
-          errorCallback('qr_already_claimed')
+          errorCallback('qr_already_claimed', data.error)
         } else if (data.error.includes("Claim has not started yet.")) {
-          errorCallback('qr_campaign_not_started')
+          errorCallback('qr_campaign_not_started', data.error)
         } else if (data.error.includes("No more claims available.")) {
-          errorCallback('qr_no_links_to_share')
+          errorCallback('qr_no_links_to_share', data.error)
         } else if (data.error.includes("Dispenser is not active")) {
-          errorCallback('qr_campaign_not_active')
+          errorCallback('qr_campaign_not_active', data.error)
         } else if (data.errors.includes("RECEIVER_NOT_WHITELISTED")) {
-          errorCallback('qr_campaign_not_eligible')
+          errorCallback('qr_campaign_not_eligible', data.error)
         } else if (
           data.errors.includes("RECLAIM_VERIFICATION_PENDING") ||
           data.errors.includes("USER_SHOULD_FOLLOW_TO_CLAIM") ||
           data.errors.includes("USER_SHOULD_FOLLOW_CORRECT_ACCOUNT") ||
           data.errors.includes("USER_ALREADY_CLAIMED")
         ) {
-          errorCallback('qr_proof_verification_failed')
-
+          errorCallback('qr_proof_verification_failed', data.error)
         } else {
-          errorCallback('qr_error')
+          errorCallback('qr_error', data.error as string)
         }
       }
     } else {

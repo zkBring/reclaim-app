@@ -15,7 +15,8 @@ import createPreviewPopup from './create-preview-popup'
 
 const createErrorScreen = (
   error: TError,
-  support?: boolean
+  support?: boolean,
+  error_text?: string
 ) => {
   // @ts-ignore
   const errorScreen = templateError.content.cloneNode(true).querySelector('.error')
@@ -33,38 +34,42 @@ const createErrorScreen = (
     }
   }
 
-  switch (error) {
-    case 'qr_campaign_finished':
-      titleElement.innerText = 'Campaign is finished'
-      break
-    case 'qr_campaign_not_active':
-      titleElement.innerText = 'QR campaign is paused'
-      break
-    case 'qr_campaign_not_started':
-      titleElement.innerText = 'Campaign has not started yet'
-      break
-    case 'qr_error':
-      titleElement.innerText = 'Something went wrong'
-      break
-    case 'qr_incorrect_parameter':
-      titleElement.innerText = 'Wrong request'
-      break
-    case 'qr_already_claimed':
-      titleElement.innerText = 'User already claimed tokens'
-      break
-    case 'qr_no_connection':
-      titleElement.innerText = 'Seems you\'re offline'
-      break
-    case 'qr_no_links_to_share':
-      titleElement.innerText = 'No links to share'
-      break
-    case 'qr_not_found':
-      titleElement.innerText = 'Asset does not exist'
-      break
-    case 'qr_proof_verification_failed':
-      titleElement.innerText = 'Verification failed:\nIncorrect Instagram account has been\nfollowed. Please make sure to verify that\nyou follow the correct Instagram account.'
-    default:
-      titleElement.innerText = 'Something went wrong.\nPlease try again later or contact us.'
+  if (error_text) {
+    titleElement.innerText = error_text
+  } else {
+    switch (error) {
+      case 'qr_campaign_finished':
+        titleElement.innerText = 'Campaign is finished'
+        break
+      case 'qr_campaign_not_active':
+        titleElement.innerText = 'QR campaign is paused'
+        break
+      case 'qr_campaign_not_started':
+        titleElement.innerText = 'Campaign has not started yet'
+        break
+      case 'qr_error':
+        titleElement.innerText = 'Something went wrong'
+        break
+      case 'qr_incorrect_parameter':
+        titleElement.innerText = 'Wrong request'
+        break
+      case 'qr_already_claimed':
+        titleElement.innerText = 'User already claimed tokens'
+        break
+      case 'qr_no_connection':
+        titleElement.innerText = 'Seems you\'re offline'
+        break
+      case 'qr_no_links_to_share':
+        titleElement.innerText = 'No links to share'
+        break
+      case 'qr_not_found':
+        titleElement.innerText = 'Asset does not exist'
+        break
+      case 'qr_proof_verification_failed':
+        titleElement.innerText = 'Verification failed:\nIncorrect Instagram account has been\nfollowed. Please make sure to verify that\nyou follow the correct Instagram account.'
+      default:
+        titleElement.innerText = 'Something went wrong.\nPlease try again later or contact us.'
+    }
   }
 
   return errorScreen
@@ -274,11 +279,12 @@ const routes = [
           // window.location.href = location
           content.append(templateClone)
         },
-        (error) => {
+        (error, error_text) => {
           content.innerHTML = ''
           const errorElement = createErrorScreen(
             error,
-            error === 'qr_proof_verification_failed' || error === 'qr_already_claimed'
+            error === 'qr_proof_verification_failed' || error === 'qr_already_claimed',
+            error_text
           )
           content.append(errorElement)
         }
