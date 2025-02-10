@@ -3,7 +3,10 @@ import {
 } from './api'
 import axios from 'axios'
 import { TError } from './types'
-import { TApi } from './types'
+import {
+  TApi,
+  TProviderType
+} from './types'
 import mobile from 'is-mobile'
 
 import getTokenData from './get-token-data'
@@ -17,13 +20,15 @@ export default async function getLinkByMultiQR(
     location: string,
     tokenAmount: string,
     symbol: string,
-    image: string
+    image: string,
+    providerType: TProviderType
   ) => void,
   linkRedirectMobileCallback?: (
     location: string,
     tokenAmount: string,
     symbol: string,
-    image: string
+    image: string,
+    providerType: TProviderType
   ) => void,
   errorCallback?: (error_name: TError) => void,
 ) {
@@ -45,7 +50,6 @@ export default async function getLinkByMultiQR(
     )
 
     const tokenAmount = ethers.utils.formatUnits(campaign.token_amount, tokenData.decimals)
-    console.log({ tokenAmount })
 
     if (reclaimVerificationURL) {
       if (mobile()) {
@@ -54,7 +58,8 @@ export default async function getLinkByMultiQR(
           reclaimVerificationURL,
           tokenAmount,
           tokenData.symbol,
-          tokenData.image
+          tokenData.image,
+          campaign.provider_type as TProviderType || 'instagram'
         )
       } else {
         // show qr
@@ -62,7 +67,8 @@ export default async function getLinkByMultiQR(
           window.location.href,
           tokenAmount,
           tokenData.symbol,
-          tokenData.image
+          tokenData.image,
+          campaign.provider_type as TProviderType || 'instagram'
         )
       }
     }

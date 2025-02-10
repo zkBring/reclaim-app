@@ -4,6 +4,9 @@ import getRedirectLink from './get-redirect-link'
 import { TApi, TError } from './types'
 import QRCodeStyling from 'qr-code-styling'
 import getReclaimRedirectLink from './get-reclaim-redirect-link'
+import InstagramImage from '../images/inst.svg'
+import XImage from '../images/x.svg'
+
 const templateLoading = document.getElementById("loader")
 const templateDesktop = document.getElementById("desktop")
 const templateMobile = document.getElementById("mobile")
@@ -115,7 +118,8 @@ const routes = [
           location,
           tokenAmount,
           symbol,
-          image
+          image,
+          providerType
         ) => {
           content.innerHTML = ''
           const renderContent = () => {
@@ -124,6 +128,14 @@ const routes = [
 
             // @ts-ignore          
             const popupTemplateClone = templateInstructionPopup.content.cloneNode(true).querySelector('.popup')
+            const providerTypeContainer = templateClone.querySelector('#provider_type')
+
+            if (providerType === 'x') {
+              providerTypeContainer.setAttribute('src', XImage)
+            } else if (providerType === 'instagram') {
+              providerTypeContainer.setAttribute('src', InstagramImage) 
+            }
+
             const buttonInstruction = templateClone.querySelector('.button_instruction')
 
             const buttonQR = templateClone.querySelector('.button_qr')
@@ -197,7 +209,8 @@ const routes = [
           location,
           tokenAmount,
           symbol,
-          image
+          image,
+          providerType
         ) => {
           content.innerHTML = ''
 
@@ -206,6 +219,14 @@ const routes = [
             const templateClone = templateMobile.content.cloneNode(true).querySelector('.container')
             // @ts-ignore          
             const popupTemplateClone = templateInstructionPopup.content.cloneNode(true).querySelector('.popup')
+            const providerTypeContainer = templateClone.querySelector('#provider_type')
+
+            if (providerType === 'x') {
+              providerTypeContainer.setAttribute('src', XImage)
+            } else if (providerType === 'instagram') {
+              providerTypeContainer.setAttribute('src', InstagramImage) 
+            }
+
             const buttonInstruction = templateClone.querySelector('.button_instruction')
             const buttonProof = templateClone.querySelector('.button_redirect')
 
